@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Users from "./pages/Users";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from './pages/Profile';
+import Orders from './pages/Orders';
+import ProductForm from './pages/products/ProductForm';
+import Products from './pages/products/Products';
+import Links from './pages/Links';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/'} element={<Users />} />
+          <Route path={'/login'} element={<Login />} />
+          <Route path={'/register'} element={<Register />} />
+          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/users'} element={<Users />} />
+          <Route path={'/users/:id/links'} element={<Links />} />
+          <Route path={'/products'} element={<Products />} />
+          <Route path={'/products/create'} element={<ProductForm />} />
+          <Route path={'/products/:id/edit'} element={<ProductForm />} />
+          <Route path={'/orders'} element={<Orders />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
